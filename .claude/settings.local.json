@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout 10 .venv/Scripts/python.exe mcp_server/server.py)",
+      "PowerShell(Compress-Archive *)",
+      "PowerShell(& \".venv\\\\Scripts\\\\pytest.exe\" -q; & \".venv\\\\Scripts\\\\python.exe\" -c \"from app import create_app; c=create_app\\(\\).test_client\\(\\); r=c.post\\('/calculate', data={'a':'2','b':'3'}\\); print\\(r.status_code\\); print\\(r.data.decode\\(\\)\\)\")",
+      "PowerShell(& \".venv\\\\Scripts\\\\python.exe\" -m pip install -q pytest-cov; & \".venv\\\\Scripts\\\\pytest.exe\" -q --cov=app --cov=mcp_server --cov-report=term-missing)",
+      "PowerShell(& \".venv\\\\Scripts\\\\pytest.exe\" -q)",
+      "PowerShell(git *)"
+    ]
+  },
+  "enabledMcpjsonServers": [
+    "project-context"
+  ]
+}

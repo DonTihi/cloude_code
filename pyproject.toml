@@ -1,0 +1,11 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "--cov --cov-report=term-missing"
+
+[tool.coverage.run]
+source = ["app", "mcp_server"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 100

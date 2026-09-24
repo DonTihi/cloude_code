@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Claude Code Agent Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <h1>Claude Code Agent Demo</h1>
+        <p class="subtitle">Small Flask application for demonstrating agentic software development.</p>
+
+        <form method="post" action="{{ url_for('main.calculate') }}" class="calculator-form">
+            <label>
+                First number
+                <input type="number" name="a" step="any" inputmode="decimal" required autofocus
+                       value="{{ request.form.get('a', '') }}">
+            </label>
+
+            <label>
+                Second number
+                <input type="number" name="b" step="any" inputmode="decimal" required
+                       value="{{ request.form.get('b', '') }}">
+            </label>
+
+            <button type="submit" class="calculate-button">Calculate</button>
+        </form>
+
+        <div aria-live="polite">
+            {% if result is defined %}
+                <p class="result">Result: <strong>{{ result }}</strong></p>
+            {% endif %}
+
+            {% if error %}
+                <p class="error" role="alert">{{ error }}</p>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>
